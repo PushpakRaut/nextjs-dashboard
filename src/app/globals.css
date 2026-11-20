@@ -1,0 +1,68 @@
+/* Hallmark · shape: app screen · genre: modern-minimal · theme: Coral (deal 2/3, seed invoice-tracking-dashboard-freelancers-f85f·e3868b96·2026-11-20·r0) · redesign: full
+ * nav: top bar, wordmark and sign out · signature: the invoice ledger on a cotton sheet, paid pressed in coral · states: empty, error, full (loading shows dashes)
+ * axes: light/grotesk-sans/warm · posture: restrained · contrast: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R3 V4 · weakest: R, the forms are plain inputs; kept them dense and let the ledger carry the material */
+/* Hallmark · waive F4 · .btn--card is the theme's secondary letterpress card, the ink card is the one primary */
+@import url("./tokens.css");
+@import url("./base.css");
+@import "tailwindcss";
+
+:root {
+  --font-outlier: var(--font-geist-mono), ui-monospace, monospace;
+  --bar-h: 64px;
+}
+
+body { background-color: var(--color-desk); background-image: radial-gradient(90% 120% at 0% 0%, var(--color-cotton), transparent 62%), var(--tex-desk); min-height: 100vh; }
+
+/* shell */
+.shell { width: 100%; max-width: 1120px; margin-inline: auto; padding: var(--space-lg) var(--space-md) var(--space-3xl); }
+.bar { display: flex; align-items: center; justify-content: space-between; min-height: var(--bar-h); border-bottom: var(--rule-hair) solid var(--color-rule-2); margin-bottom: var(--space-xl); }
+.wordmark { font-family: var(--font-display); font-weight: 600; font-size: var(--text-lg); letter-spacing: var(--tracking-display); }
+.muted { color: var(--color-muted); }
+.label { font-size: var(--text-sm); font-weight: 500; color: var(--color-muted); }
+
+/* stationery */
+.stock { background-color: var(--color-cotton); background-image: linear-gradient(100deg, var(--color-cotton), transparent 45%), var(--tex-cotton); color: var(--color-print); border-radius: var(--radius-card); box-shadow: var(--edge-stock), var(--cast-stock); padding: var(--space-lg); }
+.fig { font-family: var(--font-outlier); font-variant-numeric: tabular-nums; }
+
+/* figures row */
+.figures { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: var(--rule-hair) solid var(--color-rule-2); border-bottom: var(--rule-hair) solid var(--color-rule-2); margin-bottom: var(--space-xl); }
+.figures > div { padding: var(--space-md) var(--space-lg) var(--space-md) 0; }
+.figures > div + div { border-left: var(--rule-hair) solid var(--color-rule); padding-left: var(--space-lg); }
+.figures .fig { display: block; font-variant-numeric: tabular-nums; font-size: var(--text-3xl); color: var(--color-ink); margin-top: var(--space-2xs); }
+@media (max-width: 40rem) { .figures { grid-template-columns: minmax(0, 1fr); } .figures > div + div { border-left: 0; border-top: var(--rule-hair) solid var(--color-rule); padding-left: 0; } }
+
+/* controls */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 var(--space-lg); border: 0; border-radius: var(--radius-stock); font-weight: 500; cursor: pointer; transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out); }
+.btn--ink { background: var(--color-board); color: var(--color-board-type); text-shadow: 0 -0.75px 0 var(--color-ink); box-shadow: var(--cast-stock); }
+.btn--card { background-color: var(--color-cotton); background-image: var(--tex-cotton); color: var(--color-print); text-shadow: 0.5px 0.75px 0 var(--color-cotton); box-shadow: var(--edge-stock), var(--cast-stock); }
+.btn:hover { transform: translateY(-1px); box-shadow: var(--edge-stock), var(--cast-stock-lift); }
+.btn:active { transform: translateY(1px); box-shadow: var(--edge-stock); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.btn:focus-visible, .link:focus-visible, .field:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; transition: none; }
+.btn--wide { width: 100%; min-height: 48px; }
+
+.link { background: none; border: 0; padding: 0; color: var(--color-ink-2); text-decoration: underline; text-decoration-color: var(--color-rule-2); text-underline-offset: 0.2em; cursor: pointer; font-size: var(--text-sm); }
+.link:hover { text-decoration-color: var(--color-accent-2); }
+.link--quiet { color: var(--color-muted); }
+
+.field { width: 100%; min-height: 40px; padding: 0 var(--space-sm); background: var(--color-cotton); color: var(--color-print); border: var(--rule-hair) solid var(--color-muted); border-radius: var(--radius-input); }
+.field--inline { width: auto; }
+.field:hover { border-color: var(--color-ink-2); }
+.field:user-invalid { border-color: var(--color-error); }
+.form-label { display: grid; gap: var(--space-2xs); font-size: var(--text-sm); font-weight: 500; color: var(--color-ink-2); }
+
+.alert { padding: var(--space-sm) var(--space-md); border: var(--rule-hair) solid var(--color-error); border-radius: var(--radius-input); color: var(--color-error); background: var(--color-cotton); font-size: var(--text-sm); }
+
+/* ledger */
+.ledger { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+.ledger th { text-align: left; font-weight: 500; color: var(--color-muted); padding: var(--space-xs) var(--space-sm) var(--space-xs) 0; border-bottom: var(--rule-hair) solid var(--color-rule-2); }
+.ledger td { padding: var(--space-sm) var(--space-sm) var(--space-sm) 0; border-bottom: var(--rule-hair) solid var(--color-rule); vertical-align: middle; }
+.ledger tr:last-child td { border-bottom: 0; }
+.ledger .num { text-align: right; }
+.status { display: inline-block; padding: 1px var(--space-xs); border: var(--rule-hair) solid var(--color-ink-2); border-radius: var(--radius-input); font-size: var(--text-xs); font-weight: 500; color: var(--color-ink-2); }
+.status--draft { border-style: dashed; color: var(--color-muted); border-color: var(--color-muted); }
+/* the one settled state, pressed into the stock */
+.paid { display: inline-block; font-weight: 600; font-size: var(--text-md); color: var(--color-paid); filter: url(#press); transform: rotate(-4deg); letter-spacing: 0.02em; }
+.row-actions { display: flex; gap: var(--space-sm); justify-content: flex-end; white-space: nowrap; }
+.row-actions .danger { color: var(--color-error); }
