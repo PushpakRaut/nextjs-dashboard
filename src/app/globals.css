@@ -66,3 +66,6 @@ body { background-color: var(--color-desk); background-image: radial-gradient(90
 .paid { display: inline-block; font-weight: 600; font-size: var(--text-md); color: var(--color-paid); filter: url(#press); transform: rotate(-4deg); letter-spacing: 0.02em; }
 .row-actions { display: flex; gap: var(--space-sm); justify-content: flex-end; white-space: nowrap; }
 .row-actions .danger { color: var(--color-error); }
+
+/* free-plan wake-up note */
+.wake-notice { position: fixed; z-index: var(--z-toast); left: 50%; top: var(--space-md); transform: translateX(-50%); width: min(92vw, 520px); padding: var(--space-sm) var(--space-md); background: var(--color-board); color: var(--color-board-type); border-radius: var(--radius-card); box-shadow: var(--cast-stock-lift); font-size: var(--text-sm); text-align: center; }

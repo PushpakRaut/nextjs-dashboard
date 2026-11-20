@@ -36,3 +36,8 @@ export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
   }
   return res.status === 204 ? (undefined as T) : res.json();
 }
+
+/** Free hosting sleeps when idle. Calling this on page load starts waking the API while the user is still typing. */
+export function wakeApi(): Promise<void> {
+  return fetch(BASE + "/actuator/health", { cache: "no-store" }).then(() => undefined, () => undefined);
+}

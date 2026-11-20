@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
+import WakeNotice from "@/components/WakeNotice";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -37,6 +38,7 @@ export default function RootLayout({
             <feMerge><feMergeNode in="ink" /><feMergeNode in="shade" /></feMerge>
           </filter>
         </svg>
+        <WakeNotice />
         {children}
       </body>
     </html>
