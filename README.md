@@ -22,7 +22,7 @@ npm run dev
 Open http://localhost:3000
 
 ## Deploy (free, no credit card)
-On [Vercel](https://vercel.com) import this repo and set `NEXT_PUBLIC_API_URL` to your API's URL (e.g. `https://pushpak-invoice-api.onrender.com`). Then add the Vercel URL to the API's `CORS_ORIGINS`.
+On [Vercel](https://vercel.com) import this repo and set `NEXT_PUBLIC_API_URL` to your API's URL. Then add the Vercel URL to the API's `CORS_ORIGINS`.
 
 ## Configuration
 | Variable | Purpose | Default |
