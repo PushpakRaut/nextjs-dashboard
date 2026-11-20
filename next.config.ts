@@ -1,21 +1,10 @@
 import type { NextConfig } from "next";
 
+// Every page is client-rendered, so the app is exported as plain static files
+// and can be served from any free static host. Security headers live in render.yaml.
 const nextConfig: NextConfig = {
-  poweredByHeader: false,
-  async headers() {
-    return [
-      {
-        source: "/:path*",
-        headers: [
-          // Stop other sites from showing the dashboard in a hidden frame (clickjacking)
-          { key: "X-Frame-Options", value: "DENY" },
-          { key: "Content-Security-Policy", value: "frame-ancestors 'none'" },
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-        ],
-      },
-    ];
-  },
+  output: "export",
+  trailingSlash: true,
 };
 
 export default nextConfig;

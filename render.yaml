@@ -1,0 +1,23 @@
+# Render Blueprint: free static site, no credit card needed.
+services:
+  - type: web
+    name: pushpak-invoice-dashboard
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: out
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://pushpak-invoice-api.onrender.com
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: Content-Security-Policy
+        value: "frame-ancestors 'none'"
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin

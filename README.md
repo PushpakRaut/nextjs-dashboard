@@ -22,7 +22,7 @@ npm run dev
 Open http://localhost:3000
 
 ## Deploy (free, no credit card)
-On [Vercel](https://vercel.com) import this repo and set `NEXT_PUBLIC_API_URL` to your API's URL. Then add the Vercel URL to the API's `CORS_ORIGINS`.
+The app is exported as static files (`npm run build` writes `out/`). On [Render](https://render.com) choose *New → Blueprint* with this repo: `render.yaml` creates a free static site, sets `NEXT_PUBLIC_API_URL` and adds security headers. Then add the site's URL to the API's `CORS_ORIGINS`. Any static host (Vercel, Netlify, GitHub Pages) works the same way.
 
 ## Configuration
 | Variable | Purpose | Default |
